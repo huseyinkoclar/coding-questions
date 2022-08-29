@@ -3,33 +3,33 @@
  * @return {number}
  */
  var findNthDigit = function(n) {
+    var holder = 0
     var totalDigit = 0
     var counter = 1
-    var keepDigit
-    if(n>89){
-        totalDigit = 98
-        while(n>totalDigit){
-            totalDigit = (totalDigit*10+9) * 2
-        }
-        totalDigit = (totalDigit-9)/10
-        counter = totalDigit + Math.pow(10, (totalDigit.toString().length-1)) + 1 
-    }
-    else if(n>9) {totalDigit =9; counter = 10}
-    else counter = 1;
-
-    while(totalDigit < n){
-        keepDigit = counter.toString().length 
-        totalDigit += keepDigit 
+    var keepDigit = 0
+    var number = 0
+    while(n>keepDigit){
+        holder = keepDigit
+        keepDigit += 9 * Math.pow(10,counter-1) * (counter)
         counter++;
+        console.log(keepDigit)
     }
-    totalDigit -= keepDigit
-    counter--;
-    return counter.toString()[n-totalDigit-1]
+    counter -= 2;
+    keepDigit = holder;
+    number = Math.pow(10,counter)
+    console.log(number)
+    
+
+    while(keepDigit < n){
+        totalDigit = number.toString().length 
+        keepDigit += totalDigit 
+        number++;
+    }
+    keepDigit -= totalDigit
+    number--;
+    return number.toString()[n-keepDigit-1]
 };
 
-var forMoreFaster = function(n) {
 
-}
-
-console.log(findNthDigit(903))
+console.log(findNthDigit(234))
 
